@@ -50,6 +50,10 @@ app.use(cookieParser())
 
 app.use(bodyParser.json({ limit: '10mb' }));
 
+app.get("/",(req,res)=>{
+    res.send(" Protfilio Server is running!");
+})
+
 // api file import
 
 app.use("/api/v1",routes)

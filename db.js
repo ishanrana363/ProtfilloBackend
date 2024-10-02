@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 require('dotenv').config();
 
-const dbPort = process.env.DB_URL;
+const dbPort = process.env.MONGO_URI;
 
 const connectDb = () =>{
     try {
