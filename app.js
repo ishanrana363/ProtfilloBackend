@@ -16,12 +16,14 @@ const dbPort = process.env.MONGO_URI;
 
 const app = new express();
 
+app.set('trust proxy', true);  // <-- এটি যুক্ত করুন
 
-// Using rate limit middleware
+// Rate limit configuration
 const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutes
-    limit: 1000, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
-})
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again later.',
+});
 
 app.use(limiter)
 
