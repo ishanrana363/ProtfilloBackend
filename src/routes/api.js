@@ -7,8 +7,8 @@ const userController = require("../controllers/userController");
 const {isAdmin,isLogIn} = require("../middleware/authMiddleware");
 
 // project related api
-router.post('/create', projectController.createProject );
-router.put('/project-update/:id', projectController.update)
+router.post('/create', isLogIn,isAdmin, projectController.createProject );
+router.put('/project-update/:id',isLogIn,isAdmin,projectController.update)
 
 // user related api
 
