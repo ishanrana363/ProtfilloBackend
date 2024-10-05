@@ -9,6 +9,8 @@ var cookieParser = require('cookie-parser')
 const path = require("path");
 const bodyParser = require('body-parser');
 const routes = require("./src/routes/api");
+require("dotenv").config();
+const dbPort = process.env.MONGO_URI;
 
 
 
@@ -53,6 +55,17 @@ app.use(bodyParser.json({ limit: '10mb' }));
 app.get("/",(req,res)=>{
     res.send(" Protfilio Server is running!");
 })
+
+// Connect to MongoDB
+
+const mongoose = require("mongoose");
+
+mongoose.connect(dbPort).then(()=>{
+    console.log("Connected to MongoDB")
+}).catch((err)=>{
+    console.log(err);
+})
+
 
 // api file import
 
