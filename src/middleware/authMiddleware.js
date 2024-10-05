@@ -37,7 +37,7 @@ const isLogIn = (req, res, next) => {
         let role = decode.user.role;
         req.headers.role = role;
         next();
-        
+
 
     } catch (error) {
         return res.status(500).json({
