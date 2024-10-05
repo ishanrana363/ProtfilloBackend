@@ -5,6 +5,7 @@ const router = express.Router();
 const projectController = require("../controllers/projectController");
 const userController = require("../controllers/userController");
 
+// project related api
 router.post('/create', projectController.createProject );
 
 // user related api

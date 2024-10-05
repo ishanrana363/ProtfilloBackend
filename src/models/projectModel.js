@@ -7,24 +7,15 @@ const ProjectSchema = new Schema({
         type : String,
         required : true,
     },
-    email : {
+    img : {
         type: String,
-        validate: {
-            validator: function(v) {
-                return /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]/.test(v);
-            },
-            message: props => `${props.value} is not a valid email number!`
-        },
-        required: [true, 'User email number required']
     },
-    subject : {
+    url : {
         type: String,
-        required: true,
     },
-    msg : {
+    documentation : {
         type: String,
-        required: true,
-    }
+    },
 
 },{versionKey:false,timestamps:true});
 
@@ -32,19 +23,3 @@ const projectModel = model("Projects",ProjectSchema);
 
 
 module.exports = projectModel;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

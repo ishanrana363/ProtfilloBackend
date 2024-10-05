@@ -14,6 +14,7 @@ class userClass {
             }
             const data = await userModel.create(reqBody);
             res.status(201).send({
+                msg : "User created successfully",
                 status: "success",
                 data: data
             });
