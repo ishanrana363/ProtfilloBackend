@@ -9,15 +9,14 @@ const {isAdmin,isLogIn} = require("../middleware/authMiddleware");
 // project related api
 router.post('/create', isLogIn,isAdmin, projectController.createProject );
 router.put('/project-update/:id',isLogIn,isAdmin,projectController.update);
-router.delete("/project-delete/:id",isLogIn, isAdmin, projectController.projectDelete)
+router.delete("/project-delete/:id",isLogIn, isAdmin, projectController.projectDelete);
 
 // user related api
 
 router.post('/sing-up', userController.create );
 router.post("/login", userController.login);
 router.put("/profile-update", isLogIn , isAdmin , userController.update);
-// router.post('/login', userController.loginUser );
-// router.post('/logout', userController.logoutUser );
+router.get("/admin-profile", isLogIn, isAdmin, userController.adminProfile);
 
 
 

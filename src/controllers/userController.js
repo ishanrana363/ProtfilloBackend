@@ -83,6 +83,23 @@ class userClass {
             });
         }
     };
+    adminProfile = async (req, res) => {
+        try {
+            let id = req.headers._id;
+            let filter = {_id : id} ;
+            let data = await userModel.findById(filter);
+            res.status(200).send({
+                msg: "Admin profile fetched successfully",
+                status: "success",
+                data : data
+            });
+        } catch (error) {
+            return res.status(500).send({
+                status: "fail",
+                message: error.toString()
+            });
+        }
+    };
 }
 
 const userController = new userClass();
