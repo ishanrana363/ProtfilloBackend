@@ -11,13 +11,15 @@ router.post('/create', isLogIn,isAdmin, projectController.createProject );
 router.put('/project-update/:id',isLogIn,isAdmin,projectController.update);
 router.delete("/project-delete/:id",isLogIn, isAdmin, projectController.projectDelete);
 router.get("/sigle-project/:id" ,isLogIn, isAdmin, projectController.singleProject);
-
+router.get("/all-project-by-admin/:pageNo/:perPage/:searchValue", isLogIn,isAdmin ,projectController.allProjectByAdmin )
+router.get("/all-project", projectController.allProject);
 // user related api
 
 router.post('/sing-up', userController.create );
 router.post("/login", userController.login);
 router.put("/profile-update", isLogIn , isAdmin , userController.update);
 router.get("/admin-profile", isLogIn, isAdmin, userController.adminProfile);
+
 
 
 
