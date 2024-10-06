@@ -42,6 +42,26 @@ class ProjectController {
             });
         }
     };
+    projectDelete = async (req, res) =>{
+        try {
+            let id = req.params.id;
+            let filter = {_id : id} ;
+            let data = await projectModel.findByIdAndDelete(filter);
+            if(!data){
+                return res.status(404).send({msg: "Project not found"});
+            }
+            return res.status(200).send({
+                msg: "Project deleted successfully",
+                status: "success",
+                data : data
+            });
+        }catch (e) {
+            return res.status(500).send({
+                status: "fail",
+                msg:e.toString()
+            });
+        }
+    }
 }
 
 const projectController = new ProjectController();
