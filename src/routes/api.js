@@ -10,6 +10,7 @@ const {isAdmin,isLogIn} = require("../middleware/authMiddleware");
 router.post('/create', isLogIn,isAdmin, projectController.createProject );
 router.put('/project-update/:id',isLogIn,isAdmin,projectController.update);
 router.delete("/project-delete/:id",isLogIn, isAdmin, projectController.projectDelete);
+router.get("/sigle-project/:id" ,isLogIn, isAdmin, projectController.singleProject);
 
 // user related api
 

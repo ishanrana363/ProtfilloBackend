@@ -61,7 +61,28 @@ class ProjectController {
                 msg:e.toString()
             });
         }
-    }
+    };
+    singleProject = async (req, res) =>{
+        try {
+            let id = req.params.id;
+            let filter = {_id : id} ;
+            let data = await projectModel.findById(filter);
+            if(!data){
+                return res.status(404).send({msg: "Project not found"});
+            }
+            return res.status(200).send({
+                msg: "Project fetched successfully",
+                status: "success",
+                data : data
+            });
+            
+        } catch (error) {
+            return {
+                status: "fail",
+                msg: error.toString()
+            }
+        }
+    };
 }
 
 const projectController = new ProjectController();
