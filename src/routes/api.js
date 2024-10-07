@@ -26,7 +26,9 @@ router.get("/admin-profile", isLogIn, isAdmin, userController.adminProfile);
 
 router.post("/project-contact", projectContactController.createProjectContact);
 router.put("/project-contact/update/:id", isLogIn, isAdmin,  projectContactController.updateStatus);
-router.delete("/project-contact-delete/:id", isLogIn, isAdmin, projectContactController.deleteContactProject);  
+router.delete("/project-contact-delete/:id", isLogIn, isAdmin, projectContactController.deleteContactProject);
+router.get("/project-contact-user", projectContactController.allProjectByUser);
+router.get("/all-contact-projects/:pageNo/:perPage/:searchValue", isLogIn, isAdmin, projectContactController.allProjectByAdmin);
 
 
 
