@@ -97,7 +97,7 @@ class projectContactClass {
             let data;
             if (searchValue !== "0" && searchValue !== "") {
                 let searchRegex = { "$regex": searchValue, "$options": "i" };
-                let searchQuery = { $or: [{ name: searchRegex }, { url: searchRegex }] };
+                let searchQuery = { $or: [{ name: searchRegex }, { url: searchRegex },{email : searchRegex}] };
                 data = await projectContactModel.aggregate([
                     {
                         $facet: {
@@ -108,7 +108,6 @@ class projectContactClass {
                 ]);
             } else {
                 data = await projectContactModel.aggregate([
-                    { $match: { email: email } },
                     {
                         $facet: {
                             Total: [{ $count: "count" }],
@@ -124,6 +123,7 @@ class projectContactClass {
                 data: data
             });
         } catch (error) {
+            console.log(error);
             res.status(500).send({
                 msg: "Failed to fetch projects",
                 status: "fail",
