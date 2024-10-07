@@ -127,9 +127,13 @@ class ProjectController {
             });
         }
     };
-    allProject = async (req,res)=>{
+    allProject = async (req, res) => {
+        let name = req.params.searchValue;
         try {
-            let data = await projectModel.find();
+            let dataSearch = { $regex: name, $options: 'i' }; 
+            let searchQuery = { $or: [{ name: dataSearch }] };
+    
+            let data = await projectModel.find(searchQuery);
             res.status(200).send({
                 msg: "Projects fetched successfully",
                 status: "success",
@@ -137,11 +141,12 @@ class ProjectController {
             });
         } catch (error) {
             res.status(500).json({
-                status:"fail",
-                msg : error.toString()
-            })
+                status: "fail",
+                msg: error.toString()
+            });
         }
-    }
+    };
+    
     
 }
 

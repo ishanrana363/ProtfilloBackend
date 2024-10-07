@@ -5,6 +5,7 @@ const router = express.Router();
 const projectController = require("../controllers/projectController");
 const userController = require("../controllers/userController");
 const {isAdmin,isLogIn} = require("../middleware/authMiddleware");
+const projectContactController = require("../controllers/projectContactController");
 
 // project related api
 router.post('/create', isLogIn,isAdmin, projectController.createProject );
@@ -13,6 +14,7 @@ router.delete("/project-delete/:id",isLogIn, isAdmin, projectController.projectD
 router.get("/sigle-project/:id" ,isLogIn, isAdmin, projectController.singleProject);
 router.get("/all-project-by-admin/:pageNo/:perPage/:searchValue", isLogIn,isAdmin ,projectController.allProjectByAdmin )
 router.get("/all-project", projectController.allProject);
+router.get("/all-projects/:searchValue",projectController.allProject)
 // user related api
 
 router.post('/sing-up', userController.create );
@@ -20,6 +22,10 @@ router.post("/login", userController.login);
 router.put("/profile-update", isLogIn , isAdmin , userController.update);
 router.get("/admin-profile", isLogIn, isAdmin, userController.adminProfile);
 
+// projectContack api
+
+router.post("/project-contact", projectContactController.createProjectContact);
+router.put("/project-contact/update/:id", isLogIn, isAdmin,  projectContactController.updateStatus)
 
 
 
