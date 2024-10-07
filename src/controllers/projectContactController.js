@@ -45,6 +45,31 @@ class projectContactClass {
             });
         }
     };
+
+    deleteContactProject = async (req, res) => {
+        try {
+            let id = req.params.id;
+            let filter = { _id: id };
+            let data = await projectContactModel.findById(id);
+            if (!data) {
+                return res.status(404).send({ 
+                    status:"fail",
+                    msg: "Project contact not found" 
+                });
+            }
+            await projectContactModel.findByIdAndDelete(filter);
+            return res.status(200).send({
+                msg: "Project contact deleted successfully",
+                status: "success",
+            });
+        } catch (error) {
+            res.status(500).json({
+                status:"fail",
+                msg: "Internal Server Error" 
+            });
+        }
+    };
+
 }
 
 const projectContactController = new projectContactClass();

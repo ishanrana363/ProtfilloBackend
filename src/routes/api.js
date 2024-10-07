@@ -25,7 +25,8 @@ router.get("/admin-profile", isLogIn, isAdmin, userController.adminProfile);
 // projectContack api
 
 router.post("/project-contact", projectContactController.createProjectContact);
-router.put("/project-contact/update/:id", isLogIn, isAdmin,  projectContactController.updateStatus)
+router.put("/project-contact/update/:id", isLogIn, isAdmin,  projectContactController.updateStatus);
+router.delete("/project-contact-delete/:id", isLogIn, isAdmin, projectContactController.deleteContactProject);  
 
 
 
