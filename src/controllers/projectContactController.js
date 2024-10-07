@@ -21,15 +21,10 @@ class projectContactClass {
     updateStatus = async (req, res) => {
         try {
             let id = req.params.id;
+            console.log(id);
             let filter = { _id: id };
 
-            let data = await projectContactModel.findOne(id);
-            if (!data) {
-                return res.status(404).send({
-                    msg: "Project contact not found",
-                    status: "fail"
-                });
-            }
+            
             let updateData = await projectContactModel.findOneAndUpdate(filter, {isShow:true}, { new: true });
             return res.status(200).send({
                 msg: "Project contact status updated successfully",
