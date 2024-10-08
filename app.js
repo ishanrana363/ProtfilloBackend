@@ -20,9 +20,9 @@ app.set('trust proxy', true);  // <-- এটি যুক্ত করুন
 
 // Rate limit configuration
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
-  message: 'Too many requests from this IP, please try again later.',
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // limit each IP to 100 requests per windowMs
+    message: 'Too many requests from this IP, please try again later.',
 });
 app.set('trust proxy', 'loopback'); // Only trust localhost proxy
 app.set('trust proxy', '192.168.0.1'); // Trust specific IP
@@ -43,7 +43,11 @@ app.use(hpp())
 
 // Using cors for enabling CORS
 
-app.use(cors())
+app.use(cors({
+    origin: '*', // Allow all origins (you can restrict it to specific origins)
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
 // Using MongoSanitize for sanitize user input
 
@@ -56,7 +60,7 @@ app.use(cookieParser())
 
 app.use(bodyParser.json({ limit: '10mb' }));
 
-app.get("/",(req,res)=>{
+app.get("/", (req, res) => {
     res.send(" Protfilio Server is running!");
 })
 
@@ -64,16 +68,16 @@ app.get("/",(req,res)=>{
 
 const mongoose = require("mongoose");
 
-mongoose.connect(dbPort).then(()=>{
+mongoose.connect(dbPort).then(() => {
     console.log("Connected to MongoDB")
-}).catch((err)=>{
+}).catch((err) => {
     console.log(err);
 })
 
 
 // api file import
 
-app.use("/api/v1",routes)
+app.use("/api/v1", routes)
 
 
 
