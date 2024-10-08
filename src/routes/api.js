@@ -9,7 +9,7 @@ const projectContactController = require("../controllers/projectContactControlle
 const skillController = require("../controllers/skillController");
 
 // project related api
-router.post('/create', isLogIn,isAdmin, projectController.createProject );
+router.post('/project-create', isLogIn,isAdmin, projectController.createProject );
 router.put('/project-update/:id',isLogIn,isAdmin,projectController.update);
 router.delete("/project-delete/:id",isLogIn, isAdmin, projectController.projectDelete);
 router.get("/sigle-project/:id" ,isLogIn, isAdmin, projectController.singleProject);
