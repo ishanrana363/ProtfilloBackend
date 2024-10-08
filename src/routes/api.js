@@ -35,7 +35,7 @@ router.get("/all-contact-projects/:pageNo/:perPage/:searchValue", isLogIn, isAdm
 
 router.post("/skill-create", isLogIn, isAdmin, skillController.skillCreate );
 
-// router.get("/skill-list", isLogIn, isAdmin, userController.skillList);
+router.put("/skill-update/:id", isLogIn, isAdmin, skillController.skillUpdate );
 // router.put("/skill-update/:id", isLogIn, isAdmin, userController.updateSkill);
 // router.delete("/skill-delete/:id", isLogIn, isAdmin, userController.deleteSkill);
 
