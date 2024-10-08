@@ -6,6 +6,7 @@ const projectController = require("../controllers/projectController");
 const userController = require("../controllers/userController");
 const {isAdmin,isLogIn} = require("../middleware/authMiddleware");
 const projectContactController = require("../controllers/projectContactController");
+const skillController = require("../controllers/skillController");
 
 // project related api
 router.post('/create', isLogIn,isAdmin, projectController.createProject );
@@ -30,6 +31,13 @@ router.delete("/project-contact-delete/:id", isLogIn, isAdmin, projectContactCon
 router.get("/project-contact-user", projectContactController.allProjectByUser);
 router.get("/all-contact-projects/:pageNo/:perPage/:searchValue", isLogIn, isAdmin, projectContactController.allProjectByAdmin);
 
+// skill api
+
+router.post("/skill-create", isLogIn, isAdmin, skillController.skillCreate );
+
+// router.get("/skill-list", isLogIn, isAdmin, userController.skillList);
+// router.put("/skill-update/:id", isLogIn, isAdmin, userController.updateSkill);
+// router.delete("/skill-delete/:id", isLogIn, isAdmin, userController.deleteSkill);
 
 
 
