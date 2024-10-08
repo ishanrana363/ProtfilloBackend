@@ -128,12 +128,10 @@ class ProjectController {
         }
     };
     allProject = async (req, res) => {
-        let name = req.params.searchValue;
         try {
-            let dataSearch = { $regex: name, $options: 'i' }; 
-            let searchQuery = { $or: [{ name: dataSearch }] };
+
     
-            let data = await projectModel.find(searchQuery);
+            let data = await projectModel.find();
             res.status(200).send({
                 msg: "Projects fetched successfully",
                 status: "success",

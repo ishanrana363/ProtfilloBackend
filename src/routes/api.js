@@ -14,8 +14,8 @@ router.put('/project-update/:id',isLogIn,isAdmin,projectController.update);
 router.delete("/project-delete/:id",isLogIn, isAdmin, projectController.projectDelete);
 router.get("/sigle-project/:id" ,isLogIn, isAdmin, projectController.singleProject);
 router.get("/all-project-by-admin/:pageNo/:perPage/:searchValue", isLogIn,isAdmin ,projectController.allProjectByAdmin )
-router.get("/all-project", projectController.allProject);
-router.get("/all-projects/:searchValue",projectController.allProject)
+router.get("/all-projects", projectController.allProject);
+
 // user related api
 
 router.post('/sing-up', userController.create );
@@ -34,10 +34,9 @@ router.get("/all-contact-projects/:pageNo/:perPage/:searchValue", isLogIn, isAdm
 // skill api
 
 router.post("/skill-create", isLogIn, isAdmin, skillController.skillCreate );
-
 router.put("/skill-update/:id", isLogIn, isAdmin, skillController.skillUpdate );
-// router.put("/skill-update/:id", isLogIn, isAdmin, userController.updateSkill);
-// router.delete("/skill-delete/:id", isLogIn, isAdmin, userController.deleteSkill);
+router.delete("/skill-delete/:id", isLogIn, isAdmin, skillController.skiillDelete);
+router.get("/all-skill", skillController.allSkills);
 
 
 
