@@ -55,7 +55,6 @@ class userClass {
             return res.status(200).json({
                 status: "success",
                 token: token,
-                user: user
             });
         } catch (error) {
             return res.status(500).send({
