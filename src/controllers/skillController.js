@@ -132,6 +132,29 @@ class skillClass {
             });
         }
     };
+    singleSkill = async (req, res) => {
+        try {
+            let id = req.params.id;
+            let data = await skillModel.findById(id);
+            if (!data) {
+                return res.status(404).send({
+                    msg: "Skill not found",
+                    status: "fail"
+                });
+            }
+            res.status(200).send({
+                msg: "Skill fetched successfully",
+                status: "success",
+                data: data
+            });
+        } catch (error) {
+            res.status(500).send({
+                msg: "Failed to fetch skill",
+                status: "fail",
+                error: error.toString()
+            });
+        }
+    };
 }
 
 const skillController = new skillClass();

@@ -38,6 +38,7 @@ router.put("/skill-update/:id", isLogIn, isAdmin, skillController.skillUpdate );
 router.delete("/skill-delete/:id", isLogIn, isAdmin, skillController.skiillDelete);
 router.get("/all-skill", skillController.allSkills);
 router.get("/all-skill-by-admin/:pageNo/:perPage/:searchValue", isLogIn,isAdmin , skillController.allSkillByAdmin);
+router.get("/single-skill/:id", skillController.singleSkill)
 
 
 
