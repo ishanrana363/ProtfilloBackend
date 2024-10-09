@@ -13,7 +13,7 @@ async function sendNotificationEmail(projectData) {
     try {
         let info = await transporter.sendMail({
             from: '"Project Notifications" ishanrana094@gmail.com ', // প্রেরকের ইমেইল
-            to: `${projectData.email}` , // যেখানে নোটিফিকেশন পাঠাবেন (আপনার ইমেইল)
+            to: 'ishanrana094@gmail.com', // যেখানে নোটিফিকেশন পাঠাবেন (আপনার ইমেইল)
             subject: `New Project Created: ${projectData.name}`, // ইমেইলের বিষয়
             text: `A new project has been created.\n\n
                    Name: ${projectData.name}\n
@@ -24,7 +24,7 @@ async function sendNotificationEmail(projectData) {
 }`
         });
 
-        
+
     } catch (error) {
         return error.message;
     }
