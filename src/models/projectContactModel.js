@@ -10,9 +10,6 @@ const projectContactSchema = new Schema({
         type : String,
         lowercase : true,
     },
-    subject : {
-        type : String,
-    },
     description : {
         type : String,
     },
