@@ -104,7 +104,6 @@ class ProjectController {
                 ]);
             } else {
                 data = await projectModel.aggregate([
-                    { $match: { email: email } },
                     {
                         $facet: {
                             Total: [{ $count: "count" }],
