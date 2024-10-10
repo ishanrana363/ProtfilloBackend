@@ -7,6 +7,7 @@ const userController = require("../controllers/userController");
 const {isAdmin,isLogIn} = require("../middleware/authMiddleware");
 const projectContactController = require("../controllers/projectContactController");
 const skillController = require("../controllers/skillController");
+const serviceController = require("../controllers/serviceController");
 
 // project related api
 router.post('/project-create', isLogIn,isAdmin, projectController.createProject );
@@ -38,8 +39,11 @@ router.put("/skill-update/:id", isLogIn, isAdmin, skillController.skillUpdate );
 router.delete("/skill-delete/:id", isLogIn, isAdmin, skillController.skiillDelete);
 router.get("/all-skill", skillController.allSkills);
 router.get("/all-skill-by-admin/:pageNo/:perPage/:searchValue", isLogIn,isAdmin , skillController.allSkillByAdmin);
-router.get("/single-skill/:id", skillController.singleSkill)
+router.get("/single-skill/:id", skillController.singleSkill);
 
+// service api
+
+router.post("/service-create", isLogIn, isAdmin, serviceController.createService);
 
 
 module.exports = router;
