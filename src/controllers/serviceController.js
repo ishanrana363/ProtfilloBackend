@@ -93,6 +93,49 @@ class serviceClass {
         }
     };
 
+    allServiceByAdmin = async (req, res) => {
+        try {
+            let pageNo = Number(req.params.pageNo);
+            let perPage = Number(req.params.perPage);
+            let searchValue = req.params.searchValue ? String(req.params.searchValue) : "";
+            let skipRow = (pageNo - 1) * perPage;
+            let data;
+            if (searchValue !== "0" && searchValue !== "") {
+                let searchRegex = { "$regex": searchValue, "$options": "i" };
+                let searchQuery = { $or: [{ name: searchRegex }, { img: searchRegex }] };
+                data = await serviceModel.aggregate([
+                    {
+                        $facet: {
+                            Total: [{ $match: searchQuery }, { $count: "count" }],
+                            Rows: [{ $match: searchQuery }, { $skip: skipRow }, { $limit: perPage }]
+                        }
+                    }
+                ]);
+            } else {
+                data = await serviceModel.aggregate([
+                    {
+                        $facet: {
+                            Total: [{ $count: "count" }],
+                            Rows: [{ $skip: skipRow }, { $limit: perPage }]
+                        }
+                    }
+                ]);
+            }
+    
+            res.status(200).send({
+                msg: "Service fetched successfully",
+                status: "success",
+                data: data
+            });
+        } catch (error) {
+            res.status(500).send({
+                msg: "Failed to fetch service",
+                status: "fail",
+                error: error.toString()
+            });
+        }
+    };
+
 }
 
 const serviceController = new serviceClass();

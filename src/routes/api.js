@@ -46,8 +46,8 @@ router.get("/single-skill/:id", skillController.singleSkill);
 router.post("/service-create", isLogIn, isAdmin, serviceController.createService);
 router.put("/service-update/:id", isLogIn, isAdmin, serviceController.updateService);
 router.delete("/service-delete/:id", isLogIn, isAdmin, serviceController.deleteService);
-
 router.get("/all-service", serviceController.allService);
+router.get("/all-service-by-admin/:pageNo/:perPage/:searchValue" , isLogIn, isAdmin, serviceController.allServiceByAdmin);
 
 
 module.exports = router;
