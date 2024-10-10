@@ -18,7 +18,7 @@ class serviceClass {
                 status: "error",
                 data: null
             });
-        } 
+        }
     };
     async updateService(req, res) {
         try {
@@ -77,7 +77,22 @@ class serviceClass {
             })
         }
     };
-    
+    async allService(req, res) {
+        try {
+            let data = await serviceModel.find();
+            return res.status(200).json({
+                msg: "All services fetched successfully",
+                status: "success",
+                data: data
+            });
+        } catch (error) {
+            return res.status(500).json({
+                status: "fail",
+                msg: error.toString()
+            })
+        }
+    };
+
 }
 
 const serviceController = new serviceClass();
