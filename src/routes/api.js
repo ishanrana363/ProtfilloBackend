@@ -48,6 +48,7 @@ router.put("/service-update/:id", isLogIn, isAdmin, serviceController.updateServ
 router.delete("/service-delete/:id", isLogIn, isAdmin, serviceController.deleteService);
 router.get("/all-service", serviceController.allService);
 router.get("/all-service-by-admin/:pageNo/:perPage/:searchValue" , isLogIn, isAdmin, serviceController.allServiceByAdmin);
+router.get("/single-service/:id", serviceController.serviceById);
 
 
 module.exports = router;

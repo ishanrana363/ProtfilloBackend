@@ -136,6 +136,29 @@ class serviceClass {
         }
     };
 
+    serviceById = async (req,res)=>{
+        try {
+            let id = req.params.id;
+            let data = await serviceModel.findById(id);
+            if (!data) {
+                return res.status(404).send({
+                    msg: "Service not found",
+                    status: "fail"
+                });
+            }
+            res.status(200).send({
+                msg: "Service fetched successfully",
+                status: "success",
+                data: data
+            });
+        } catch (error) {
+            return res.status(500).json({
+                status: "fail",
+                msg: error.toString()
+            })
+        }
+    };
+
 }
 
 const serviceController = new serviceClass();
