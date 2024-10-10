@@ -29,7 +29,7 @@ class serviceClass {
             let filter = { _id: id };
 
             let update = requestBody;
-            
+
             let options = { new: true };
 
             let data = await serviceModel.findOneAndUpdate(filter, update, options);
@@ -52,6 +52,29 @@ class serviceClass {
                 status: "error",
                 data: null
             });
+        }
+    };
+    async deleteService(req, res) {
+        try {
+            let id = req.params.id;
+            let filter = { _id: id };
+            let data = await serviceModel.findByIdAndDelete(filter);
+            if (!data) {
+                return res.status(404).send({
+                    msg: "Service not found",
+                    status: "fail",
+                });
+            }
+            return res.status(200).send({
+                msg: "Service deleted successfully",
+                status: "success",
+                data: null
+            });
+        } catch (error) {
+            return res.status(500).json({
+                status: "fail",
+                msg: error.toString()
+            })
         }
     };
     
