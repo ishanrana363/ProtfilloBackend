@@ -44,6 +44,7 @@ router.get("/single-skill/:id", skillController.singleSkill);
 // service api
 
 router.post("/service-create", isLogIn, isAdmin, serviceController.createService);
+router.put("/service-update/:id", isLogIn, isAdmin, serviceController.updateService);
 
 
 module.exports = router;
