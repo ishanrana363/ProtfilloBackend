@@ -146,6 +146,22 @@ class feedbackClass {
             })
         };
     };
+    allFeedback = async (req, res)=>{
+        try {
+            let data = await feedbackModel.find({});
+            res.status(200).send({
+                msg: "Feedback fetched successfully",
+                status: "success",
+                data: data
+            });
+        } catch (error) {
+            return res.status(500).send({
+                msg: "Failed to fetch feedback",
+                status: "fail",
+                error: error.toString()
+            });
+        }
+    };
 
 }
 
