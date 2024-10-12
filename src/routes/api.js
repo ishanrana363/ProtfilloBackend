@@ -58,6 +58,9 @@ router.get("/single-service/:id", serviceController.serviceById);
 
 // feedback api 
 
+router.post("/feedback-create", isLogIn, feedbackController.create);
+router.put("/feedback-update/:id", isLogIn, feedbackController.update)
+
 
 
 module.exports = router;
