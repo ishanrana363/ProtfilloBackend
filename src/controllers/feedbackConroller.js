@@ -18,7 +18,6 @@ class feedbackClass {
             })
         }
     };
-
     update = async (req,res)=>{
         try{
             let id = req.params.id;
@@ -125,7 +124,28 @@ class feedbackClass {
             });
         }
     };
-    
+    feedbackByid = async (req,res)=>{
+        try {
+            let id = req.params.feedbackByid;
+            let data = await feedbackModel.findById(id);
+            if (!data) {
+                return res.status(404).send({
+                    msg: "Feedback not found",
+                    status: "fail"
+                });
+            }
+            res.status(200).send({
+                msg: "Feedback fetched successfully",
+                status: "success",
+                data: data
+            });
+        } catch (error) {
+            return res.status(500).json({
+                status: "fail",
+                msg: error.toString()
+            })
+        };
+    };
 
 }
 
