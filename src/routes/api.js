@@ -1,14 +1,20 @@
 const express = require('express');
 
 const router = express.Router();
-
+//project controller
 const projectController = require("../controllers/projectController");
+//user controller
 const userController = require("../controllers/userController");
+// middleware controller
 const {isAdmin,isLogIn} = require("../middleware/authMiddleware");
+// projectContact Controllerr
 const projectContactController = require("../controllers/projectContactController");
+// skill controllers
 const skillController = require("../controllers/skillController");
+// service controller
 const serviceController = require("../controllers/serviceController");
-
+// feedbackController
+const feedbackController = require("../controllers/feedbackConroller");
 // project related api
 router.post('/project-create', isLogIn,isAdmin, projectController.createProject );
 router.put('/project-update/:id',isLogIn,isAdmin,projectController.update);
@@ -49,6 +55,9 @@ router.delete("/service-delete/:id", isLogIn, isAdmin, serviceController.deleteS
 router.get("/all-service", serviceController.allService);
 router.get("/all-service-by-admin/:pageNo/:perPage/:searchValue" , isLogIn, isAdmin, serviceController.allServiceByAdmin);
 router.get("/single-service/:id", serviceController.serviceById);
+
+// feedback api 
+
 
 
 module.exports = router;
