@@ -62,6 +62,7 @@ router.post("/feedback-create", isLogIn, feedbackController.create);
 router.put("/feedback-update/:id", isLogIn, feedbackController.update);
 router.delete("/feedback-delete/:id", isLogIn, feedbackController.feedbackDelete);
 router.get("/feedback/:pageNo/:perPage/:searchValue", isLogIn, feedbackController.allFeedbackByAdmin);
+router.get("/all-feedback/:feedbackid", feedbackController.feedbackByid )
 
 
 

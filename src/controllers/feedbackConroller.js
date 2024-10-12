@@ -126,7 +126,7 @@ class feedbackClass {
     };
     feedbackByid = async (req,res)=>{
         try {
-            let id = req.params.feedbackByid;
+            let id = req.params.feedbackid;
             let data = await feedbackModel.findById(id);
             if (!data) {
                 return res.status(404).send({
