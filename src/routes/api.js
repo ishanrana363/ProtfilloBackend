@@ -75,6 +75,7 @@ router.post("/blog-create", isLogIn, blogController.createBlog);
 router.put("/blog-update/:id", isLogIn, blogController.updateBlog);
 router.delete("/blog-delete/:id", isLogIn,blogController.deleteBlog);
 router.get("/all-blog", blogController.allBlog);
+router.get("/blogs/:pageNo/:perPage/:searchValue", blogController.blogByAdmin);
 
 // router.put("/blog-update/:id", isLogIn, isAdmin, blogController.updateBlog);
 // router.delete("/blog-delete/:id", isLogIn, isAdmin, blogController.deleteBlog);
