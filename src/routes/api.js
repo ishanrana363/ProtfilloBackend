@@ -15,6 +15,10 @@ const skillController = require("../controllers/skillController");
 const serviceController = require("../controllers/serviceController");
 // feedbackController
 const feedbackController = require("../controllers/feedbackConroller");
+// blog controller
+const blogController = require("../controllers/blogController");
+
+
 // project related api
 router.post('/project-create', isLogIn,isAdmin, projectController.createProject );
 router.put('/project-update/:id',isLogIn,isAdmin,projectController.update);
@@ -65,6 +69,14 @@ router.get("/feedback/:pageNo/:perPage/:searchValue", isLogIn, feedbackControlle
 router.get("/single-feedback/:feedbackid", feedbackController.feedbackByid );
 router.get("/all-feedback", feedbackController.allFeedback);
 
+// blog api
+
+router.post("/blog-create", isLogIn, blogController.createBlog);
+
+// router.put("/blog-update/:id", isLogIn, isAdmin, blogController.updateBlog);
+// router.delete("/blog-delete/:id", isLogIn, isAdmin, blogController.deleteBlog);
+// router.get("/all-blog", blogController.allBlog);
+// router.get("/single-blog/:id", blogController.singleBlog);
 
 
 module.exports = router;
