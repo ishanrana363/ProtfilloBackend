@@ -76,11 +76,8 @@ router.put("/blog-update/:id", isLogIn, blogController.updateBlog);
 router.delete("/blog-delete/:id", isLogIn,blogController.deleteBlog);
 router.get("/all-blog", blogController.allBlog);
 router.get("/blogs/:pageNo/:perPage/:searchValue", blogController.blogByAdmin);
+router.get("/single-blog/:id", blogController.singleBlog);
 
-// router.put("/blog-update/:id", isLogIn, isAdmin, blogController.updateBlog);
-// router.delete("/blog-delete/:id", isLogIn, isAdmin, blogController.deleteBlog);
-// router.get("/all-blog", blogController.allBlog);
-// router.get("/single-blog/:id", blogController.singleBlog);
 
 
 module.exports = router;

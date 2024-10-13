@@ -131,6 +131,30 @@ class blogClass {
             });
         }
     };
+    singleBlog = async (req, res) => {
+        try {
+            let id = req.params.id;
+            let data = await blogModel.findById(id);
+            if (!data) {
+                return res.status(404).send({
+                    msg: "Blog not found",
+                    status: "fail",
+                    data: null
+                });
+            }
+            return res.status(200).send({
+                msg: "Blog fetched successfully",
+                status: "success",
+                data: data
+            });
+        } catch (error) {
+            res.status(500).send({
+                msg: "Failed to fetch blog",
+                status: "fail",
+                error: error.toString()
+            });
+        }
+    };
 }
 
 const blogController = new blogClass();
