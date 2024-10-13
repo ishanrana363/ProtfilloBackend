@@ -72,6 +72,8 @@ router.get("/all-feedback", feedbackController.allFeedback);
 // blog api
 
 router.post("/blog-create", isLogIn, blogController.createBlog);
+router.put("/blog-update/:id", isLogIn, blogController.updateBlog);
+router.delete("/blog-delete/:id", isLogIn,blogController.deleteBlog);
 
 // router.put("/blog-update/:id", isLogIn, isAdmin, blogController.updateBlog);
 // router.delete("/blog-delete/:id", isLogIn, isAdmin, blogController.deleteBlog);

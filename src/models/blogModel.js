@@ -9,10 +9,10 @@ const blogSchema = new Schema({
         type : String,
     },
     description : {
-
+        type : String,
     },
 },{timestamps: true,versionKey : false });
 
-const blogModel = model("Blog", blogSchema);
+const blogModel = model("blog", blogSchema);
 
 module.exports = blogModel;
