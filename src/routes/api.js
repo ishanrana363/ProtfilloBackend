@@ -17,6 +17,8 @@ const serviceController = require("../controllers/serviceController");
 const feedbackController = require("../controllers/feedbackConroller");
 // blog controller
 const blogController = require("../controllers/blogController");
+// email controller
+const emailController = require("../controllers/emailController");
 
 
 // project related api
@@ -77,6 +79,8 @@ router.delete("/blog-delete/:id", isLogIn,blogController.deleteBlog);
 router.get("/all-blog", blogController.allBlog);
 router.get("/blogs/:pageNo/:perPage/:searchValue", blogController.blogByAdmin);
 router.get("/single-blog/:id", blogController.singleBlog);
+
+router.post("/send/email", emailController.sendEmailUser);
 
 
 

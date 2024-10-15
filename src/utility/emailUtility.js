@@ -12,9 +12,9 @@ let transporter = nodemailer.createTransport({
 async function sendNotificationEmail(projectData) {
     try {
         let info = await transporter.sendMail({
-            from: '"Project Notifications" ishanrana094@gmail.com ', // প্রেরকের ইমেইল
-            to: 'ishanrana094@gmail.com', // যেখানে নোটিফিকেশন পাঠাবেন (আপনার ইমেইল)
-            subject: `New Project Created: ${projectData.name}`, // ইমেইলের বিষয়
+            from: '"Project Notifications" ishanrana094@gmail.com ', 
+            to: 'ishanrana094@gmail.com', 
+            subject: `New Project Created: ${projectData.name}`,
             text: `A new project has been created.\n\n
                    Name: ${projectData.name}\n
                    Email: ${projectData.email}\n
