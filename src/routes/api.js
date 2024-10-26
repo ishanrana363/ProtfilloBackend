@@ -19,6 +19,8 @@ const feedbackController = require("../controllers/feedbackConroller");
 const blogController = require("../controllers/blogController");
 // email controller
 const emailController = require("../controllers/emailController");
+// logo controller
+const logoController = require("../controllers/logoController");
 
 
 // project related api
@@ -82,6 +84,13 @@ router.get("/single-blog/:id", blogController.singleBlog);
 
 router.post("/send/email", emailController.sendEmailUser);
 
+// logo related api
+
+router.post("/logo-create", isLogIn, isAdmin, logoController.uploadLogo);
+// router.put("/logo-update/:id", isLogIn, isAdmin, logoController.updateLogo);
+// router.delete("/logo-delete/:id", isLogIn, isAdmin, logoController.logoDelete);
+// router.get("/single-logo/:id", logoController.singleLogo);
+// router.get("/all-logo", logoController.allLogo);
 
 
 module.exports = router;
