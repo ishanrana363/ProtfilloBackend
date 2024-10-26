@@ -87,7 +87,7 @@ router.post("/send/email", emailController.sendEmailUser);
 // logo related api
 
 router.post("/logo-create", isLogIn, isAdmin, logoController.uploadLogo);
-// router.put("/logo-update/:id", isLogIn, isAdmin, logoController.updateLogo);
+router.put("/logo-update/:id", isLogIn, isAdmin, logoController.updateLogo);
 // router.delete("/logo-delete/:id", isLogIn, isAdmin, logoController.logoDelete);
 // router.get("/single-logo/:id", logoController.singleLogo);
 // router.get("/all-logo", logoController.allLogo);
