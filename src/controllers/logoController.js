@@ -46,3 +46,27 @@ exports.updateLogo = async (req,res)=>{
         });
     }
 };
+
+exports.deleteLogo = async (req,res)=>{
+    try {
+        let id = req.params.id;
+        let deletedData = await logoModel.findByIdAndDelete(id);
+        if (!deletedData) {
+            return res.status(404).send({
+                status: "fail",
+                msg: "Logo not found"
+            });
+        }
+        return res.status(200).send({
+            msg: "Logo deleted successfully",
+            status: "success"
+        });
+    } catch (error) {
+        return res.status(500).send({
+            status: "fail",
+            msg: "Failed to delete logo",
+            error: error.message
+        });
+    }
+};
+
