@@ -70,3 +70,19 @@ exports.deleteLogo = async (req,res)=>{
     }
 };
 
+exports.getAllLogos = async (req,res)=>{
+    try {
+        let data = await logoModel.find({});
+        return res.status(200).send({
+            msg: "Logos fetched successfully",
+            status: "success",
+            data: data
+        });
+    } catch (error) {
+        return res.status(500).send({
+            status: "fail",
+            msg: "Failed to fetch logos",
+            error: error.message
+        });
+    }
+};

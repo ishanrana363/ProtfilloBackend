@@ -90,7 +90,7 @@ router.post("/logo-create", isLogIn, isAdmin, logoController.uploadLogo);
 router.put("/logo-update/:id", isLogIn, isAdmin, logoController.updateLogo);
 router.delete("/logo-delete/:id", isLogIn, isAdmin, logoController.deleteLogo);
 // router.get("/single-logo/:id", logoController.singleLogo);
-// router.get("/all-logo", logoController.allLogo);
+router.get("/all-logo", logoController.getAllLogos);
 
 
 module.exports = router;
