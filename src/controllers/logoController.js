@@ -86,3 +86,27 @@ exports.getAllLogos = async (req,res)=>{
         });
     }
 };
+
+exports.getLogoById = async (req,res)=>{
+    try {
+        let id = req.params.id;
+        let data = await logoModel.findById(id);
+        if (!data) {
+            return res.status(404).send({
+                status: "fail",
+                msg: "Logo not found"
+            });
+        }
+        return res.status(200).send({
+            msg: "Logo fetched successfully",
+            status: "success",
+            data: data
+        });
+    } catch (error) {
+        return res.status(500).send({
+            status: "fail",
+            msg: "Failed to fetch logo",
+            error: error.message
+        });
+    }
+};
