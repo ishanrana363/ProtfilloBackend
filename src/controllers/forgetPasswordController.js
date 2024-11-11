@@ -19,7 +19,7 @@ exports.sendMail = async (req, res) => {
             // Update or insert OTP in the database
             await otpModel.findOneAndUpdate(
                 { email: email },
-                { $set: { otp: otpCode } },
+                { $set: { otp: otpCode,status:0 } },
                 { upsert: true }
             );
 
@@ -45,7 +45,6 @@ exports.verifyOtp = async (req, res) => {
     let email = req.body.email;
     let status = 0;
     let otpCode = req.body.otp;
-    console.log(otpCode);
     let statusUpdate = 1;
     try {
         let result = await otpModel.findOne({ email: email, otp: otpCode, status: status });
