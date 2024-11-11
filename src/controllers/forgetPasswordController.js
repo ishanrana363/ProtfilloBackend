@@ -45,6 +45,7 @@ exports.verifyOtp = async (req, res) => {
     let email = req.body.email;
     let status = 0;
     let otpCode = req.body.otp;
+    console.log(otpCode);
     let statusUpdate = 1;
     try {
         let result = await otpModel.findOne({ email: email, otp: otpCode, status: status });

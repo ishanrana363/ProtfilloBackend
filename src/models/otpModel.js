@@ -11,7 +11,8 @@ const otpSchema = new Schema({
         type: Number,
         required: true,
         unique: true
-    }, status: {
+    }, 
+    status: {
         type: String,
         default: 0
     }
