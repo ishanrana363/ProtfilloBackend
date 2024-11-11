@@ -96,6 +96,7 @@ router.get("/all-logo", logoController.getAllLogos);
 
 // forget password api
 router.post("/send-otp", forgetPasswordController.sendMail);
+router.post("/otp-verify" , forgetPasswordController.verifyOtp);
 
 
 module.exports = router;                                                                              
