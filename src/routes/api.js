@@ -93,4 +93,4 @@ router.get("/single-logo/:id", logoController.getLogoById);
 router.get("/all-logo", logoController.getAllLogos);
 
 
-module.exports = router;
+module.exports = router;                                                                              

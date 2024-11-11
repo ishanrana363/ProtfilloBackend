@@ -8,6 +8,9 @@ const blogSchema = new Schema({
     url : {
         type : String,
     },
+    img : {
+        type : String,
+    },
     description : {
         type : String,
     },
