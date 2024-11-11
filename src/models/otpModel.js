@@ -15,4 +15,8 @@ const otpSchema = new Schema({
         type: String,
         default: 0
     }
-}, {})
+}, {timestamps:true,versionKey:false});
+
+const otpModel = model("otp", otpSchema);
+
+module.exports = otpModel;

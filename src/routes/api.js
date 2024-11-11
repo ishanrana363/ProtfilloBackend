@@ -21,6 +21,8 @@ const blogController = require("../controllers/blogController");
 const emailController = require("../controllers/emailController");
 // logo controller
 const logoController = require("../controllers/logoController");
+// forget password controller
+const forgetPasswordController = require("../controllers/forgetPasswordController");
 
 
 // project related api
@@ -91,6 +93,9 @@ router.put("/logo-update/:id", isLogIn, isAdmin, logoController.updateLogo);
 router.delete("/logo-delete/:id", isLogIn, isAdmin, logoController.deleteLogo);
 router.get("/single-logo/:id", logoController.getLogoById);
 router.get("/all-logo", logoController.getAllLogos);
+
+// forget password api
+router.post("/send-otp", forgetPasswordController.sendMail);
 
 
 module.exports = router;                                                                              
