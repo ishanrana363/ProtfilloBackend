@@ -43,7 +43,8 @@ class userClass {
                     message: "User not found"
                 });
             }
-            let matchPassword = bcrypt.compareSync(password, user.password);
+            let matchPassword = bcrypt.compare(password, user.password);
+            console.log(matchPassword);
             if (!matchPassword) {
                 return res.status(403).json({
                     status: "fail",

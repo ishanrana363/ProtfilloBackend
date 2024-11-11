@@ -1,7 +1,7 @@
 const SendEmailUtility = require('../helper/emailHelper');
 const otpModel = require('../models/otpModel');
 const userModel = require('../models/userModel');
-
+const bcrypy = require("bcrypt");
 
 exports.sendMail = async (req, res) => {
     const { email } = req.body;
