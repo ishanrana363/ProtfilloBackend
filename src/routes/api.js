@@ -23,6 +23,8 @@ const emailController = require("../controllers/emailController");
 const logoController = require("../controllers/logoController");
 // forget password controller
 const forgetPasswordController = require("../controllers/forgetPasswordController");
+// stack controller
+const stackController = require("../controllers/stackController");
 
 
 // project related api
@@ -99,5 +101,8 @@ router.post("/send-otp", forgetPasswordController.sendMail);
 router.post("/otp-verify" , forgetPasswordController.verifyOtp);
 router.post("/forget-password", forgetPasswordController.resetPassword);
 
+// stack api
+
+router.post("/stack-create", isLogIn, isAdmin, stackController.createStack);
 
 module.exports = router;                                                                              
