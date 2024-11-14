@@ -47,3 +47,30 @@ exports.allStack = async (req, res) => {
         });
     }
 };
+
+exports.getStackById = async (req, res) => {
+    try {
+        const stackId = req.params.id;
+        const data = await stackModel.findById(stackId);
+
+        if (!data) {
+            return res.status(404).send({
+                status: "fail",
+                msg: "Stack not found"
+            });
+        }
+
+        return res.status(200).send({
+            msg: "Stack fetched successfully",
+            status: "success",
+            data: data
+        });
+
+    } catch (error) {
+        return res.status(500).send({
+            status: "fail",
+            msg: "Failed to fetch stack",
+            error: error.message
+        });
+    }
+};
