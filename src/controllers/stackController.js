@@ -1,6 +1,6 @@
 const stackModel = require("../models/stackModel");
 
-exports.createStack = async (req,res)=>{
+exports.createStack = async (req, res) => {
     try {
         const reqBody = req.body;
         const data = await stackModel.create(reqBody);
@@ -19,9 +19,21 @@ exports.createStack = async (req,res)=>{
     }
 };
 
-exports.allStack = async (req,res)=>{
+exports.allStack = async (req, res) => {
     try {
-        let data = await stackModel.find({});
+        const { name, categories } = req.query;
+
+        // Building a dynamic filter object based on query parameters
+        let filter = {};
+        if (name) {
+            filter.name = { $regex: name, $options: "i" }; // case-insensitive search for name
+        }
+        if (categories) {
+            filter.categories = { $regex: categories, $options: "i" }; // case-insensitive search for categories
+        }
+
+        let data = await stackModel.find(filter);
+
         return res.status(200).send({
             msg: "Stacks fetched successfully",
             status: "success",

@@ -106,4 +106,4 @@ router.post("/forget-password", forgetPasswordController.resetPassword);
 router.post("/stack-create", isLogIn, isAdmin, stackController.createStack);
 router.get("/all-stack", stackController.allStack);
 
-module.exports = router;                                                                              
+module.exports = router;
