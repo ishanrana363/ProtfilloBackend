@@ -107,5 +107,6 @@ router.post("/stack-create", isLogIn, isAdmin, stackController.createStack);
 router.get("/all-stack", stackController.allStack);
 router.get("/single-stack/:id", stackController.getStackById);
 router.put("/stack-update/:id", stackController.updateStackById);
+router.delete("/stack-delete/:id", stackController.deleteStackById);
 
 module.exports = router;

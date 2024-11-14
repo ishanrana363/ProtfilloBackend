@@ -74,7 +74,6 @@ exports.getStackById = async (req, res) => {
         });
     }
 };
-
 exports.updateStackById = async (req, res) => {
     try {
         const stackId = req.params.id;
@@ -106,3 +105,31 @@ exports.updateStackById = async (req, res) => {
     }
 };
 
+exports.deleteStackById = async (req, res) => {
+    try {
+        const stackId = req.params.id;
+        const data = await stackModel.findByIdAndDelete(stackId);
+
+        // If no data is found after deleting, return a 404 error
+        if (!data) {
+            return res.status(404).send({
+                status: "fail",
+                msg: "Stack not found"
+            });
+        }
+
+        // If the deletion is successful, return a success response with a message
+        return res.status(200).send({
+            msg: "Stack deleted successfully",
+            status: "success"
+        });
+
+    } catch (error) {
+        // If an error occurs, return a 500 error with the error message
+        return res.status(500).send({
+            status: "fail",
+            msg: "Failed to delete stack",
+            error: error.message
+        });
+    }
+};
