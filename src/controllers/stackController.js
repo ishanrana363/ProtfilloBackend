@@ -18,3 +18,20 @@ exports.createStack = async (req,res)=>{
         });
     }
 };
+
+exports.allStack = async (req,res)=>{
+    try {
+        let data = await stackModel.find({});
+        return res.status(200).send({
+            msg: "Stacks fetched successfully",
+            status: "success",
+            data: data
+        });
+    } catch (error) {
+        return res.status(500).send({
+            status: "fail",
+            msg: "Failed to fetch stacks",
+            error: error.message
+        });
+    }
+};
