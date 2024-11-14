@@ -74,3 +74,35 @@ exports.getStackById = async (req, res) => {
         });
     }
 };
+
+exports.updateStackById = async (req, res) => {
+    try {
+        const stackId = req.params.id;
+        const reqBody = req.body;
+        const data = await stackModel.findByIdAndUpdate(stackId, reqBody, { new: true });
+
+        // If no data is found after updating, return a 404 error
+        if (!data) {
+            return res.status(404).send({
+                status: "fail",
+                msg: "Stack not found"
+            });
+        }
+
+        // If the update is successful, return a success response with the updated data
+        return res.status(200).send({
+            msg: "Stack updated successfully",
+            status: "success",
+            data: data
+        });
+
+    } catch (error) {
+        // If an error occurs, return a 500 error with the error message
+        return res.status(500).send({
+            status: "fail",
+            msg: "Failed to update stack",
+            error: error.message
+        });
+    }
+};
+
