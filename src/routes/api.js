@@ -108,5 +108,6 @@ router.get("/all-stack", stackController.allStack);
 router.get("/single-stack/:id", stackController.getStackById);
 router.put("/stack-update/:id", stackController.updateStackById);
 router.delete("/stack-delete/:id", stackController.deleteStackById);
+router.get("/all-stack-admin/:pageNo/:perPage/:searchValue", stackController.stackByAdmin);
 
 module.exports = router;
