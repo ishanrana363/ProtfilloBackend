@@ -95,6 +95,7 @@ router.put("/logo-update/:id", isLogIn, isAdmin, logoController.updateLogo);
 router.delete("/logo-delete/:id", isLogIn, isAdmin, logoController.deleteLogo);
 router.get("/single-logo/:id", logoController.getLogoById);
 router.get("/all-logo", logoController.getAllLogos);
+router.put("/logo-upload", isLogIn, isAdmin, logoController.logoUpload )
 
 // forget password api
 router.post("/send-otp", forgetPasswordController.sendMail);

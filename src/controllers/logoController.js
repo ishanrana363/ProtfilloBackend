@@ -110,3 +110,21 @@ exports.getLogoById = async (req,res)=>{
         });
     }
 };
+
+
+exports.logoUpload = async (req,res)=>{
+    try {
+        const reqBody = req.body;
+        const data = await logoModel.updateOne({},{$set : reqBody},{upsert:true});
+        return res.status(201).json({
+            status:"success",
+            msg : "Logo upload successfully",
+            data : data
+        });
+    } catch (error) {
+        return res.status(500).json({
+            status:"fail",
+            msg : error
+        })
+    }
+}
