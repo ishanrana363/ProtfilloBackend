@@ -2,7 +2,7 @@ const { tokenCreate } = require("../helper/tokenHelper");
 const userModel = require("../models/userModel");
 require("dotenv").config();
 const bcrypt = require("bcrypt");
-
+const jwt = require("jsonwebtoken")
 class userClass {
     create = async (req, res) => {
         try {
@@ -53,9 +53,11 @@ class userClass {
             }
             const key = process.env.JWTKEY;
             const token = tokenCreate({user}, key, "10d" );
+            const verifyToken = jwt.verify(token,key);
             return res.status(200).json({
                 status: "success",
                 token: token,
+                role : verifyToken.user.role
             });
         } catch (error) {
             return res.status(500).send({
